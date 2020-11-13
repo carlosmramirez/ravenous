@@ -16,6 +16,15 @@ class App extends React.Component {
   };
 
   searchYelp(term, location, sortBy) {
+    // handles empty search cases
+    if(term === '') {
+      alert('Please input search term and try again!');
+      return;
+    }
+    if(location === '') {
+      alert('Please input search location and try again!')
+      return;
+    }
     Yelp.search(term, location, sortBy).then(businesses => {
       this.setState({
         businesses: businesses
